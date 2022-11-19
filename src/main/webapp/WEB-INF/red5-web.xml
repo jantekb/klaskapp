@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:aop="http://www.springframework.org/schema/aop"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans-4.3.xsd 
 	http://www.springframework.org/schema/context
-	http://www.springframework.org/schema/context/spring-context-4.3.xsd
-	http://www.springframework.org/schema/aop 
-    http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+	http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
 	<context:annotation-config />
 	<!-- Defines a properties file for dereferencing variables -->
 	<context:property-placeholder location="/WEB-INF/red5-web.properties"/>
+
+	<bean id="wsSessionHolder" class="com.streamtoolbox.klask.session.WsSessionHolder"></bean>
 
 	<!--- S3 Recording info -->
 	<bean id="app.storageClient" class="io.antmedia.storage.AmazonS3StorageClient">
@@ -34,8 +34,7 @@
 
 	<context:component-scan base-package="io.antmedia.rest" />
 	<context:component-scan base-package="io.antmedia.plugin" />
-	
-	
+
 	<bean id="acceptOnlyStreamsInDataStore" class="io.antmedia.security.AcceptOnlyStreamsInDataStore"/>
 	<bean id="acceptOnlyStreamsWithWebhook" class="io.antmedia.security.AcceptOnlyStreamsWithWebhook"/>
 	
@@ -74,8 +73,6 @@
 		</property>
 	</bean>
 
-	
-	
     <bean id="webrtc.adaptor"  
     	class="#{ T(io.antmedia.rest.RestServiceBase).isEnterprise() ? 'io.antmedia.enterprise.webrtc.WebRTCAdaptor' : 'io.antmedia.webrtc.MockWebRTCAdaptor' }"/>
 </beans>

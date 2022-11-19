@@ -6,18 +6,20 @@
 		<version>2.6.0-SNAPSHOT</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>io.antmedia.webrtc</groupId>
-	<artifactId>StreamApp</artifactId>
+	<groupId>com.streamtoolbox</groupId>
+	<artifactId>KlaskApp</artifactId>
 	<packaging>war</packaging>
-	<name>StreamApp Maven Webapp</name>
+	<name>Klask Scoring Webapp</name>
 	<url>http://maven.apache.org</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.javadoc.skip>true</maven.javadoc.skip>
+		<maven.source.skip>true</maven.source.skip>
 	</properties>
 	<developers>
     		<developer>
-      		<id>mekya</id>
-      		<email>mekya@antmedia.io</email>
+				<id>jantekb</id>
+				<email>jantekb@gmail.com</email>
     		</developer>
   	</developers>
   	<licenses>
@@ -39,34 +41,9 @@
 		</repository>
 	</distributionManagement>
 	<build>
-		<finalName>StreamApp</finalName>
+		<finalName>KlaskApp</finalName>
 		<testSourceDirectory>src/test/java</testSourceDirectory>
 		<plugins>
-			<plugin>
-				<groupId>org.sonatype.plugins</groupId>
-				<artifactId>nexus-staging-maven-plugin</artifactId>
-				<version>${nexus-staging-maven-plugin.version}</version>
-				<extensions>true</extensions>
-				<configuration>
-					<serverId>ossrh</serverId>
-					<nexusUrl>https://oss.sonatype.org/</nexusUrl>
-					<autoReleaseAfterClose>true</autoReleaseAfterClose>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-source-plugin</artifactId>
-				<version>${maven-source-plugin.version}</version>
-				<executions>
-					<execution>
-						<id>attach-sources</id>
-						<goals>
-							<goal>jar-no-fork</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<!-- <plugin> <artifactId>maven-javadoc-plugin</artifactId> </plugin> -->
 			<plugin>
 				<artifactId>maven-war-plugin</artifactId>
 				<version>${maven-war-plugin.version}</version>
@@ -76,26 +53,6 @@
 				<artifactId>maven-bundle-plugin</artifactId>
 				<version>${maven-bundle-plugin.version}</version>
 				<extensions>true</extensions>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-gpg-plugin</artifactId>
-				<version>${maven-gpg-plugin.version}</version>
-				<executions>
-					<execution>
-						<id>sign-artifacts</id>
-						<phase>verify</phase>
-						<goals>
-							<goal>sign</goal>
-						</goals>
-						<configuration>
-			                <gpgArguments>
-			                    <arg>--pinentry-mode</arg>
-			                    <arg>loopback</arg>
-			                </gpgArguments>
-          				</configuration>
-					</execution>
-				</executions>
 			</plugin>
 		</plugins>
 		<resources>
@@ -220,6 +177,11 @@
     		<version>${spring.version}</version>
 		</dependency>
 		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-messaging</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
 			<version>${servlet.version}</version>
@@ -243,10 +205,15 @@
 			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
-	</dependencies>
-	<description>StreamApp for Ant Media Server</description>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.24</version>
+        </dependency>
+    </dependencies>
+	<description>Klask Scoring App for Ant Media Server</description>
 	<organization>
-		<name>Ant Media</name>
-		<url>http://antmedia.io</url>
+		<name>Streamtoolbox</name>
+		<url>http://streamtoolbox.com</url>
 	</organization>
 </project>

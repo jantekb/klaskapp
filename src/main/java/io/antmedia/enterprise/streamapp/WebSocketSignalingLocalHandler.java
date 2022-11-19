@@ -1,6 +1,16 @@
 package io.antmedia.enterprise.streamapp;
 
-import java.io.IOException;
+import io.antmedia.websocket.WebSocketCommunityHandler;
+import io.antmedia.websocket.WebSocketConstants;
+import org.apache.catalina.core.ApplicationContextFacade;
+import org.apache.commons.lang3.exception.ExceptionUtils;
+import org.apache.commons.lang3.reflect.FieldUtils;
+import org.json.simple.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.web.context.ConfigurableWebApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import javax.websocket.EndpointConfig;
 import javax.websocket.OnClose;
@@ -9,20 +19,7 @@ import javax.websocket.OnMessage;
 import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
-
-import org.apache.catalina.core.ApplicationContextFacade;
-import org.apache.commons.lang3.exception.ExceptionUtils;
-import org.apache.commons.lang3.reflect.FieldUtils;
-
-import org.json.simple.JSONObject;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.context.ApplicationContext;
-import org.springframework.web.context.ConfigurableWebApplicationContext;
-import org.springframework.web.context.support.WebApplicationContextUtils;
-
-import io.antmedia.websocket.WebSocketCommunityHandler;
-import io.antmedia.websocket.WebSocketConstants;
+import java.io.IOException;
 
 
 @ServerEndpoint(value="/websocket/signaling", configurator=AMSEndpointConfigurator.class)

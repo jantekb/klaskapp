@@ -1,12 +1,12 @@
 package io.antmedia.enterprise.streamapp;
 
-import javax.websocket.HandshakeResponse;
-import javax.websocket.server.HandshakeRequest;
-import javax.websocket.server.ServerEndpointConfig;
-
 import org.apache.tomcat.websocket.server.DefaultServerEndpointConfigurator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import javax.websocket.HandshakeResponse;
+import javax.websocket.server.HandshakeRequest;
+import javax.websocket.server.ServerEndpointConfig;
 
 public class AMSEndpointConfigurator extends DefaultServerEndpointConfigurator {
 	public static final String USER_AGENT = "user-agent";

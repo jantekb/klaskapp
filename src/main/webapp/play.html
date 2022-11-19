@@ -678,10 +678,10 @@
 
 						console.debug(description);
 						if (description.audioBitrate + description.videoBitrate > description.targetBitrate) {
-							document.getElementById("networkWarning").style.display = "block";
-							setTimeout(function () {
+							// document.getElementById("networkWarning").style.display = "block";
+							/*setTimeout(function () {
 								document.getElementById("networkWarning").style.display = "none";
-							}, 3000);
+							}, 3000);*/
 						}
 					}
 					else if (info == "ice_connection_state_changed") {

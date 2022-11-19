@@ -1,9 +1,9 @@
 import "@babel/polyfill";
 import chrome from "selenium-webdriver/chrome";
-import { Builder, By, Key, Capabilities, until } from "selenium-webdriver";
+import {Builder, By, until} from "selenium-webdriver";
 import assert from "assert";
-import { path } from "chromedriver";
-import { ExpectedConditions as EC } from 'protractor'
+import {path} from "chromedriver";
+
 let driver = null;
 const chromeOptions = new chrome.Options().addArguments("use-fake-ui-for-media-stream", "--use-fake-device-for-media-stream").headless();
 const URL = "http://localhost:5080/LiveApp/conference.html";
